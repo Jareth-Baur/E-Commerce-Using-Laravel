@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -39,10 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/employees', [EmployeeController::class, 'list'])->name('emplist');
 
 
-
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customerlist');
+    Route::get('/customers', [CustomerController::class, 'list'])->name('customerlist');
     Route::get('/customer/{code}', [CustomerController::class, 'listAllCustomers']);
+
+    Route::get('/orders', [OrderController::class, 'list'])->name('orderlist');
 
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

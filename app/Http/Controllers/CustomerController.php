@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function list()
     {
         // Fetch all customers from the database
         $customers = Customer::all();

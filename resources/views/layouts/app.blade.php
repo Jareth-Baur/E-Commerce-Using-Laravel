@@ -13,9 +13,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.css">
         <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/custom.css">
         <ul>
     <!-- Other navigation items -->
-{{--    <li><a href="{{ route('customers.index') }}">Customers</a></li>--}}
+{{--    <li><a href="{{ route('customers.list') }}">Customers</a></li>--}}
 </ul>
 
         <!-- Scripts -->
