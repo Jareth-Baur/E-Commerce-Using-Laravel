@@ -14,26 +14,27 @@ class OrderController extends Controller
 {
     public function list()
     {
+        // Fetch only the required fields
         $data = DB::table('orderdetails as od')
             ->join('orders as o', 'o.orderNumber', '=', 'od.orderNumber')
             ->join('products as p', 'od.productCode', '=', 'p.productCode')
             ->join('customers as c', 'c.customerNumber', '=', 'o.customerNumber')
             ->select(
-                'od.orderNumber',
-                'od.quantityOrdered',
-                'o.orderDate',
-                'p.productName',
-                'od.priceEach',
-                'c.customerName',
-                'c.contactLastName',
-                'c.contactFirstName'
+                'od.orderNumber', // Order Number
+                'c.customerName', // Customer Name (you could concatenate first/last name if needed)
+                'p.productName',  // Product Name
+                'od.quantityOrdered', // Quantity Ordered
+                'od.priceEach', // Price Each
+                'o.orderDate'  // Date Ordered
             )
             ->get();
 
+        // Check if the request is AJAX for DataTables
         if (request()->ajax()) {
             return DataTables::of($data)
+                // Format the order date as required
                 ->editColumn('orderDate', function ($row) {
-                    return Carbon::parse($row->orderDate)->format('F j, Y'); // Format date
+                    return Carbon::parse($row->orderDate)->format('F j, Y'); // Format date as "Month Day, Year"
                 })
                 ->make(true);
         }

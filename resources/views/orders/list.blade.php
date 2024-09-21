@@ -13,7 +13,7 @@
                     <i class="fa-solid fa-folder" style="margin-left: 10px;"></i>
                     {{ __('List of Orders') }}</h3>
 
-                <table class="table table-success table-striped" id="orderdatatable">
+                <table class="table table-striped" id="orderdatatable">
                     <!-- table table-striped table-hover  -->
                     <thead>
                     <tr>
