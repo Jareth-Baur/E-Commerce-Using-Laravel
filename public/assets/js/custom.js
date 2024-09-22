@@ -85,7 +85,7 @@ $(document).ready(function () {
     var customerNumber = "{{ $customerNumber }}"; // Get customer number from Blade variable
     var baseUrl = window.location.origin;
 
-    $('#customersOrdersTable').DataTable({
+    $('#ordersTable').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
@@ -103,12 +103,13 @@ $(document).ready(function () {
         // columnDefs: [
         //     {
         //         targets: 4, // Adjust index based on your action column position
-        //         render: function(data, type, row) {
+        //         render: function (data, type, row) {
         //             return '<a href="/order/' + row.orderNumber + '" class="btn btn-info">View</a>';
         //         }
         //     }
         // ]
     });
 });
+
 
 new DataTable('#datatables');

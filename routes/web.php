@@ -6,7 +6,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\OfficeController; // Added OfficeController import
+use App\Http\Controllers\OfficeController;
+
+// Added OfficeController import
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
     // Office route: list all offices
     Route::get('/offices', [OfficeController::class, 'list'])->name('officelist');
+    Route::get('/office/{code}', [OfficeController::class, 'details']);
 });
 
 require __DIR__ . '/auth.php';

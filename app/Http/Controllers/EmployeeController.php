@@ -35,9 +35,9 @@ class EmployeeController extends Controller
 
     public function details(Request $request, $code)
     {
-        $employee = DB::table('employees')->where('employeeNumber', $code)->first();
+        $data = DB::table('employees')->where('employeeNumber', $code)->first();
 
-        return view('employees.details', ['employee' => $employee]);
+        return view('employees.details', ['employee' => $data]);
     }
 
 

@@ -28,12 +28,19 @@ class OfficeController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
-                    return '<a href="/offices/' . $row->officeCode . '" class="btn btn-primary btn-sm">View</a>';
+                    return '<a href="/office/' . $row->officeCode . '" class="btn btn-primary btn-sm">View</a>';
                 })
                 ->make(true);
         }
 
         // If not an AJAX request, return the view
         return view('offices.list');
+    }
+
+    public function details(Request $request, $code)
+    {
+        $data = DB::table('offices')->where('officeCode', $code)->first();
+
+        return view('offices.details', ['office' => $data]);
     }
 }

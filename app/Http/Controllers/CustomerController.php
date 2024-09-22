@@ -37,24 +37,23 @@ class CustomerController extends Controller
 
     public function viewOrders($customerNumber)
     {
-        $data = DB::table('orderdetails as od')
-            ->join('orders as o', 'o.orderNumber', '=', 'od.orderNumber')
-            ->join('products as p', 'od.productCode', '=', 'p.productCode')
-            ->select(
-                'o.orderNumber',
-                'o.orderDate',
-                'o.status',
-                'o.comments'
-            )
-            ->where('o.customerNumber', $customerNumber) // Ensure this matches your database schema
-            ->get();
-
         if (request()->ajax()) {
-            return response()->json($data);
+            // Fetch orders for the specific customer
+            $orders = DB::table('orderdetails as od')
+                ->join('orders as o', 'o.orderNumber', '=', 'od.orderNumber')
+                ->select(
+                    'o.orderNumber',
+                    'o.orderDate',
+                    'o.status',
+                    'o.comments'
+                )
+                ->where('o.customerNumber', $customerNumber)
+                ->get();
+
+            return response()->json($orders);
         }
 
-        // Pass the $orders to the view
-        return view('customers.orders.list', ['customerNumber' => $customerNumber, 'orders' => $data]);
+        return view('customers.orders.list', ['customerNumber' => $customerNumber]);
     }
 
 }
