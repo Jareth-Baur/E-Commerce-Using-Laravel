@@ -9,20 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <table>
+                    <table class="table table-striped" id="datatables">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($userdata as $user)
+                        @foreach($userdata as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                             </tr>
-                            @endforeach
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
